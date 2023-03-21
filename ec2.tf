@@ -13,7 +13,7 @@ resource "aws_instance" "ec2_instance" {
     volume_size           = "30"
     delete_on_termination = "true"
   }
-} 
+}
 data "template_file" "user_data" {
   template = file("user_data.tpl") #Defines a script that runs when the EC2 instance starts
 }

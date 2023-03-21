@@ -2,7 +2,13 @@
 variable "domain_name" {
   type        = string
   description = "The domain name for the website."
-  default     = "cmcloudlab491.info"
+  default     = "cmcloudlab1035.info"
+}
+
+variable "r53_zone_id" {
+  type        = string
+  description = "The zone ID of the domain you are deploying to, you can get it from R53 DNS Dashboard"
+  default     = "Z002051618M4QHG4VM3M6"
 }
 
 ### EC2 Values ###

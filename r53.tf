@@ -1,13 +1,7 @@
-##Route53 DNS Zone
-resource "aws_route53_zone" "main" {
-  name = var.domain_name
-}
-
-
 ### R53 Records ###
 resource "aws_route53_record" "www" {
-  zone_id = aws_route53_zone.main.zone_id #If you already have your domain on R53, change this id to that domains R53 zone id
-  name    = var.domain_name                
+  zone_id = var.r53_zone_id
+  name    = var.domain_name
   type    = "A"
 
   alias {
@@ -22,6 +16,6 @@ resource "aws_route53_record" "hello_cert_dns" {
   name            = tolist(aws_acm_certificate.ssl_certificate.domain_validation_options)[0].resource_record_name
   records         = [tolist(aws_acm_certificate.ssl_certificate.domain_validation_options)[0].resource_record_value]
   type            = tolist(aws_acm_certificate.ssl_certificate.domain_validation_options)[0].resource_record_type
-  zone_id         = aws_route53_zone.main.zone_id #If you already have your domain on R53, change this id to that domains R53 zone id
+  zone_id         = var.r53_zone_id
   ttl             = 60
 }

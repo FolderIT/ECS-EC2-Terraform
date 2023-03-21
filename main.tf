@@ -45,8 +45,8 @@ module "vpc" {
 
   enable_nat_gateway  = true
   single_nat_gateway  = true
-  reuse_nat_ips       = true                 
-  external_nat_ip_ids = aws_eip.eip_nat.*.id 
+  reuse_nat_ips       = true
+  external_nat_ip_ids = aws_eip.eip_nat.*.id
 
 }
 
